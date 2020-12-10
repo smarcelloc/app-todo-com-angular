@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Todo } from './../models/todo.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,17 +9,28 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  public todos: any[] = []; // [ ]
+  public todos: Todo[] = []; // [ ]
   //public todos:any[]; // undefined
   public title: String = "Minhas tarefas"
 
   constructor() {
-    this.todos.push('Passear com o cachorro')
-    this.todos.push('ir a praia')
-    this.todos.push('visitar a tia no hospital')
+    this.todos.push(new Todo('Passear com o cachorro', true));
+    this.todos.push(new Todo('Ir para a praia'));
+    this.todos.push(new Todo('Cortar o cabelo'));
   }
 
-  public alterarTitle(): void {
-    this.title = "titulo alterado"
+  public remove(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    if (index !== -1) {
+      this.todos.splice(index, 1);
+    }
+  }
+
+  public markAsDone() {
+
+  }
+
+  public markAsUndone() {
+
   }
 }

@@ -1,8 +1,10 @@
 <h1>{{title}}</h1>
-<button (click)="alterarTitle()">
-  Alterar título
-</button>
 
 <ul>
-  <li *ngFor="let todo of todos">{{todo}}</li>
+  <li *ngFor="let todo of todos">
+    {{todo.description }}
+    <button *ngIf="todo.done">Refazer</button>
+    <button *ngIf="!todo.done">Concluído</button>
+    <button (click)="remove(todo)">Remover</button>
+  </li>
 </ul>
