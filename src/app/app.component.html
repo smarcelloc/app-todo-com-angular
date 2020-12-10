@@ -1,5 +1,9 @@
 <h1>{{title}}</h1>
 
+<p *ngIf="todos.length==0">
+  Você não tem nenhuma tarefa hoje!
+</p>
+
 <ul>
   <li *ngFor="let todo of todos">
     {{todo.description }}
@@ -8,3 +12,17 @@
     <button (click)="remove(todo)">Remover</button>
   </li>
 </ul>
+
+<form [formGroup]="formGroup">
+  <fieldset>
+    <label for="description">Descrição</label>
+    <input type="text" maxlength="60" formControlName="description" placeholder="Informe a sua tarefa">
+    <small *ngIf="formGroup.controls.description.invalid && 
+    !formGroup.controls.description.pristine">
+      Este campo está invalido
+    </small>
+    <button type="submit" [disabled]="formGroup.invalid" (click)="add()">Adicionar</button>
+  </fieldset>
+</form>
+
+<!-- fromGroup.pristine (Você tem certeza que deseja sair do formulario)  -->

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Todo } from './../models/todo.model';
 
@@ -11,12 +12,20 @@ import { Todo } from './../models/todo.model';
 export class AppComponent {
   public todos: Todo[] = []; // [ ]
   //public todos:any[]; // undefined
-  public title: String = "Minhas tarefas"
+  public title: String = "Minhas tarefas";
+  public formGroup: FormGroup;
 
-  constructor() {
-    this.todos.push(new Todo('Passear com o cachorro', true));
-    this.todos.push(new Todo('Ir para a praia'));
-    this.todos.push(new Todo('Cortar o cabelo'));
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this._formValidate();
+  }
+
+  public add() {
+    //this.formGroup.value; //Retorna em JSON {'description': '...', 'created': '...'}
+    const description = this.formGroup.controls['description'].value;
+    this.todos.push(new Todo(description));
+    this.formGroup.reset();
   }
 
   public remove(todo: Todo) {
@@ -32,5 +41,19 @@ export class AppComponent {
 
   public markAsUndone(todo: Todo) {
     todo.done = false
+  }
+
+
+
+  private _formValidate() {
+    this.formGroup = this.formBuilder.group({
+      description: [
+        '', // Valor padrão
+        Validators.compose([
+          Validators.maxLength(60),
+          Validators.required
+        ])
+      ]
+    });
   }
 }
