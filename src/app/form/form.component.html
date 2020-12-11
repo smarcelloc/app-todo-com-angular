@@ -1,0 +1,11 @@
+<form [formGroup]="formGroup" id="formInsert" class="card-basic-white">
+  <fieldset>
+    <label for="description">Descrição *</label>
+    <input type="text" maxlength="60" formControlName="description" id="description" placeholder="Informe a sua tarefa">
+    <small *ngIf="formGroup.controls.description.invalid && 
+  !formGroup.controls.description.pristine" class="form-invalid">
+      O campo descrição é obrigatório e deve contém 60 caracteres no máximo
+    </small>
+    <button type="submit" [disabled]="formGroup.invalid" (click)="add()">Adicionar</button>
+  </fieldset>
+</form>

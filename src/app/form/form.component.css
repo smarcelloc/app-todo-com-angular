@@ -1,0 +1,37 @@
+fieldset{
+  border: none;
+}
+
+input{
+  display: block;
+  width: 100%;
+  padding: .5rem .25rem;
+  font-size: 1rem;
+  margin: .25rem 0;
+  border-radius: .25rem;
+  border-color: #000;
+}
+
+small.form-invalid{
+  display: block;
+  color: #a52a2a;
+  font-weight: bold;
+}
+
+button{
+  color: #fff;
+  background-color: #22c222;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  display: block;
+  border: none;
+  border-radius: .25rem;
+}
+
+button:disabled{
+  background-color: #cfddd1;
+  transition: all 0.5s;
+}

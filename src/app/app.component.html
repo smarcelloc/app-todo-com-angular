@@ -1,28 +1,11 @@
 <h1>{{title}}</h1>
 
-<p *ngIf="todos.length==0">
-  Você não tem nenhuma tarefa hoje!
-</p>
+<div class="animate__animated animate__fadeInRight animate__faster" *ngIf="!modoInsert">
+  <app-todo></app-todo>
+  <button class="btn-modo" (click)="changeModo()">Adicionar Tarefas</button>
+</div>
 
-<ul>
-  <li *ngFor="let todo of todos">
-    {{todo.description }}
-    <button *ngIf="!todo.done" (click)="markAsDone(todo)">Concluído</button>
-    <button *ngIf="todo.done" (click)="markAsUndone(todo)">Refazer</button>
-    <button (click)="remove(todo)">Remover</button>
-  </li>
-</ul>
-
-<form [formGroup]="formGroup">
-  <fieldset>
-    <label for="description">Descrição</label>
-    <input type="text" maxlength="60" formControlName="description" placeholder="Informe a sua tarefa">
-    <small *ngIf="formGroup.controls.description.invalid && 
-    !formGroup.controls.description.pristine">
-      Este campo está invalido
-    </small>
-    <button type="submit" [disabled]="formGroup.invalid" (click)="add()">Adicionar</button>
-  </fieldset>
-</form>
-
-<!-- fromGroup.pristine (Você tem certeza que deseja sair do formulario)  -->
+<div class="animate__animated animate__fadeInLeft animate__faster" *ngIf="modoInsert">
+  <app-form></app-form>
+  <button class="btn-modo" (click)="changeModo()" id="btn-cancelar">Cancelar</button>
+</div>

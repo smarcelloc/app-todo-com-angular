@@ -1,0 +1,30 @@
+h1{
+  text-align: center;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 3rem;
+  text-shadow: 4px 3px 0 #4e4e4e;
+  font-weight: lighter;
+  margin: 0;
+  color: #fff;
+}
+
+.btn-modo{
+  cursor: pointer;
+  background-color: #000;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 3rem;
+  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-modo:hover{
+  background-color: #fff;
+  color: #000;
+  transition: all .5s;
+}
